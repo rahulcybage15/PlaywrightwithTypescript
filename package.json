@@ -1,0 +1,24 @@
+{
+  "name": "playwright-ui-framework",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@faker-js/faker": "^9.7.0",
+    "@playwright/test": "^1.52.0",
+    "dotenv": "^16.5.0",
+    "playwright": "^1.52.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "faker": "^6.6.6",
+    "winston": "^3.17.0"
+  }
+}
