@@ -35,7 +35,7 @@ export class HomePage extends BasePage{
     }
 
     async verifyInCaseOfInvalidLogin(message:string){
-      const text =  await this.getText(this.textInvalidCreds);
+      const text =  await this.getValueOrText(this.textInvalidCreds);
       expect(text).toContain(message);
 
     }
