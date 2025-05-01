@@ -3,3 +3,6 @@ node_modules/
 
 # Ignore environment files
 .env
+
+# Ignore test-results file
+.last-run.json
