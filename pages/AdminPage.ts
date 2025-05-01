@@ -93,9 +93,5 @@ export class AdminPage extends BasePage{
         await this.selectFromDorpDownOption("Status",status);
 
     }
-
-    
-
-
     
 }

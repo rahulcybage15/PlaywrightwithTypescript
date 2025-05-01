@@ -42,7 +42,7 @@ export class BasePage {
 
     }
 
-    async typeText(selectorOrLocator: string | Locator,text: string): Promise<void>{
+    async typeText(selectorOrLocator: string | Locator,text: any): Promise<void>{
         this.logger.info(`filling ${text} value in ${selectorOrLocator}`);
         await (await this.getElement(selectorOrLocator)).fill(text);
     //     const element = typeof selectorOrLocator === 'string'
@@ -52,12 +52,16 @@ export class BasePage {
     //     await element.fill(text);
     }
     async getText(selectorOrLocator : string |Locator):Promise<string>{
-        // this.logger.info(`getting the text of ${selectorOrLocator}`);
-        // const element = typeof selectorOrLocator === 'string'
-        // ? this.page.locator(selectorOrLocator)
-        // : selectorOrLocator;
-       // return await element.innerText();
-       return await (await this.getElement(selectorOrLocator)).innerText();
+        const element = await this.getElement(selectorOrLocator);
+        const tagname= await element.evaluate(el => el.tagName.toLowerCase());
+
+        if(tagname === 'input' || tagname==='textarea'|| tagname === 'select'){
+            return await element.inputValue();
+        }
+        else {
+            return await element.innerText();
+        }
+      // return await (await this.getElement(selectorOrLocator)).innerText();
     }
 
     async waitForElement(selectorOrLocator : string |Locator, timeout = 5000) {
