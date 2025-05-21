@@ -62,11 +62,6 @@ export class PIMPage extends BasePage{
        const expectedName =  await this.getValueOrText(this.firstnameInput);
         expect(expectedName).toEqual(firstname);
     }
-
-
-
-    
-
     
     
 }

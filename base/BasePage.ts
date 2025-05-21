@@ -51,15 +51,21 @@ export class BasePage {
     //    // await element.fill('');
     //     await element.fill(text);
     }
-    async getText(selectorOrLocator : string |Locator):Promise<string>{
-        const element = await this.getElement(selectorOrLocator);
+    async getValueOrText(selectorOrLocator : string |Locator):Promise<string>{
+        try {
+            const element = await this.getElement(selectorOrLocator);
         const tagname= await element.evaluate(el => el.tagName.toLowerCase());
 
-        if(tagname === 'input' || tagname==='textarea'|| tagname === 'select'){
+        if(['input','textarea','select'].includes(tagname)){
             return await element.inputValue();
         }
         else {
             return await element.innerText();
+        }
+            
+        } catch (error: any) {
+            console.error(` Error in getValueOrText(): ${error.message}`);
+            throw new Error(`Failed to retrieve text/value from element: ${selectorOrLocator}`);
         }
       // return await (await this.getElement(selectorOrLocator)).innerText();
     }
