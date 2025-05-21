@@ -1,3 +1,4 @@
+import 'allure-playwright';
 import {test as baseTest} from '@playwright/test';
 import { HomePage } from '../pages/HomePage';
 import { DashboardPage } from '../pages/DashboardPage';

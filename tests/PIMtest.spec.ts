@@ -11,7 +11,7 @@ dotenv.config();
 test.describe('PIM page test cases', () => {
 
   //  let PIMPage: Page;
-    test('Go to PIM page and perform actions @smoke', async ({page,adminPage, commonPage,homePage,dashboardPage,PIMpage}) => {
+    test('Go to PIM page >> select an emp >> edit few details and save it @smoke', async ({page,adminPage, commonPage,homePage,dashboardPage,PIMpage}) => {
         
         const user = DataGenerator.generateUser();
         console.log(user.userEmail);
@@ -23,7 +23,7 @@ test.describe('PIM page test cases', () => {
         await PIMpage.selectNationality("Indian");
     }),
 
-    test.only('Go to PIM page and add an employee @Regression', async ({page,adminPage, commonPage,homePage,dashboardPage,PIMpage}) => {
+    test('Go to PIM page and add an employee @Regression', async ({page,homePage,dashboardPage,PIMpage}) => {
         
         const emp = DataGenerator.generateUser();
         const empFirstName = DataGenerator.generateUser().empFirstName;

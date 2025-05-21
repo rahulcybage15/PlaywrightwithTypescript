@@ -5,13 +5,17 @@ dotenv.config();
 
 export default defineConfig({
   testDir: './tests',
+  //globalSetup: require.resolve('../global-setup.ts'),
   timeout: 30000,
   expect: {
     timeout: 50000,
   },
-  reporter: [['list'], ['html', { open: 'never' }]],
+  reporter: [
+    ["list"],
+    ['allure-playwright', { outputFolder: 'allure-results',detail: true}],
+    ],
   use: {
-    headless: false,
+    headless: true,
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
     screenshot: 'only-on-failure',
